@@ -48,7 +48,7 @@ const FormMeds = () => {
       sku: "",
       base_price: "",
       category: "",
-      location_id: { location_id },
+      location_id: location_id,
       stock_id: "",
       qty: "",
       id_harga_wni: "",
@@ -64,6 +64,20 @@ const FormMeds = () => {
         dispatch(UiSlice.actions.setSuccessFetchingData);
         dispatch(MedsSlice.actions.setMeds(res.data.meds));
         dispatch(UiSlice.actions.setIdle);
+        reset({
+          id: "",
+          medicine: "",
+          sku: "",
+          base_price: "",
+          category: "",
+          location_id: location_id,
+          stock_id: "",
+          qty: "",
+          id_harga_wni: "",
+          harga_wni: "",
+          id_harga_wna: "",
+          harga_wna: "",
+        });
       })
       .catch((err) => {
         dispatch(UiSlice.actions.setFetchingDataError);
