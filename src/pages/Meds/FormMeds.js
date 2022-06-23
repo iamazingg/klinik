@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import { useForm } from "react-hook-form";
@@ -10,6 +10,7 @@ import MedsCategoriesSlice from "../../store/slice/MedsCategoriesSlice";
 import Loading from "../../components/loading/Loading";
 import { MedRules } from "../../validations/MedValidation";
 import { FaExclamationCircle } from "react-icons/fa";
+import { data } from "autoprefixer";
 
 const FormMeds = () => {
   const dispatch = useDispatch();
@@ -18,11 +19,44 @@ const FormMeds = () => {
   const location_id = useSelector(
     (state) => state.auth.locations
   );
+  const selectedMeds = useSelector(
+    (state) => state.meds.selectedMeds
+  );
+  let formdata = {
+    id: selectedMeds.id,
+    medicine: selectedMeds.med,
+    sku: selectedMeds.sku,
+    base_price: selectedMeds.harga_beli,
+    category: selectedMeds.med_category_id,
+    location_id: location_id,
+    stock_id: selectedMeds.id_stock,
+    qty: selectedMeds.stock,
+    id_harga_wni: selectedMeds.id_harga_wni,
+    harga_wni: selectedMeds.harga_wni,
+    id_harga_wna: selectedMeds.id_harga_wna,
+    harga_wna: selectedMeds.harga_wna,
+  };
   let {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm();
+    reset,
+  } = useForm({
+    defaultValues: {
+      id: "",
+      medicine: "",
+      sku: "",
+      base_price: "",
+      category: "",
+      location_id: { location_id },
+      stock_id: "",
+      qty: "",
+      id_harga_wni: "",
+      harga_wni: "",
+      id_harga_wna: "",
+      harga_wna: "",
+    },
+  });
   const onSubmit = async (FormData) => {
     dispatch(UiSlice.actions.setStartFetchingData);
     await saveMeds(FormData, token)
@@ -36,10 +70,12 @@ const FormMeds = () => {
       });
   };
   useEffect(() => {
+    reset(formdata);
+  }, [selectedMeds]);
+  useEffect(() => {
     dispatch(UiSlice.actions.setStartFetchingData);
     GetMedsCategories(token)
       .then((res) => {
-        console.log(res.data.dataMedsCategories);
         dispatch(UiSlice.actions.setSuccessFetchingData);
         dispatch(
           MedsCategoriesSlice.actions.SetMedsCategories(
@@ -65,6 +101,11 @@ const FormMeds = () => {
           className="flex flex-row w-full"
         >
           <div className="mx-4 my-5 flex-auto">
+            <input
+              type="hidden"
+              name="id"
+              {...register("id", MedRules.id)}
+            />
             <input
               type="text"
               name="medicine"
@@ -158,11 +199,15 @@ const FormMeds = () => {
             <input
               type="hidden"
               name="location_id"
-              value={location_id}
               {...register(
                 "location_id",
                 MedRules.location_id
               )}
+            />
+            <input
+              type="hidden"
+              name="stock_id"
+              {...register("stock_id", MedRules.stock_id)}
             />
             <input
               type="text"
@@ -183,6 +228,14 @@ const FormMeds = () => {
           </div>
           <div className="mx-4 my-5 flex-auto">
             <input
+              type="hidden"
+              name="id_harga_wni"
+              {...register(
+                "id_harga_wni",
+                MedRules.id_harga_wni
+              )}
+            />
+            <input
               type="number"
               name="harga_wni"
               id="harga_wni"
@@ -202,6 +255,14 @@ const FormMeds = () => {
             )}
           </div>
           <div className="mx-4 my-5 flex-auto">
+            <input
+              type="hidden"
+              name="id_harga_wna"
+              {...register(
+                "id_harga_wna",
+                MedRules.id_harga_wna
+              )}
+            />
             <input
               type="number"
               name="harga_wna"

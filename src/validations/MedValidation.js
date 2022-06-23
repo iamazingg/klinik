@@ -1,4 +1,10 @@
 export const MedRules = {
+  id: {
+    maxLength: {
+      value: 255,
+      message: "nama obat terlalu panjang",
+    },
+  },
   medicine: {
     required: {
       value: true,
@@ -7,27 +13,6 @@ export const MedRules = {
     maxLength: {
       value: 255,
       message: "nama obat terlalu panjang",
-    },
-  },
-  category: {
-    required: {
-      value: true,
-      message: "kategori obat tidak boleh kosong",
-    },
-    maxLength: {
-      value: 255,
-      message: "kategori obat terlalu panjang",
-    },
-  },
-
-  base_price: {
-    required: {
-      value: true,
-      message: "Harga beli tidak boleh kosong",
-    },
-    maxLength: {
-      value: 255,
-      message: "Harga beli terlalu panjang",
     },
   },
   sku: {
@@ -40,24 +25,40 @@ export const MedRules = {
       message: "SKU terlalu panjang",
     },
   },
-  harga_wni: {
+  base_price: {
     required: {
       value: true,
-      message: "harga WNI tidak boleh kosong",
+      message: "Harga beli tidak boleh kosong",
     },
     maxLength: {
       value: 255,
-      message: "harga WNI terlalu panjang",
+      message: "Harga beli terlalu panjang",
     },
   },
-  harga_wna: {
+  category: {
     required: {
       value: true,
-      message: "harga WNA tidak boleh kosong",
+      message: "kategori obat tidak boleh kosong",
     },
     maxLength: {
       value: 255,
-      message: "harga WNA terlalu panjang",
+      message: "kategori obat terlalu panjang",
+    },
+  },
+  location_id: {
+    required: {
+      value: true,
+      message: "lokasi tidak boleh kosong",
+    },
+    maxLength: {
+      value: 255,
+      message: "lokasi terlalu panjang",
+    },
+  },
+  stock_id: {
+    maxLength: {
+      value: 255,
+      message: "nama obat terlalu panjang",
     },
   },
   qty: {
@@ -70,14 +71,36 @@ export const MedRules = {
       message: "stock terlalu panjang",
     },
   },
-  location_id: {
+  id_harga_wni: {
+    maxLength: {
+      value: 255,
+      message: "nama obat terlalu panjang",
+    },
+  },
+  harga_wni: {
     required: {
       value: true,
-      message: "lokasi tidak boleh kosong",
+      message: "harga WNI tidak boleh kosong",
     },
     maxLength: {
       value: 255,
-      message: "lokasi terlalu panjang",
+      message: "harga WNI terlalu panjang",
+    },
+  },
+  id_harga_wna: {
+    maxLength: {
+      value: 255,
+      message: "nama obat terlalu panjang",
+    },
+  },
+  harga_wna: {
+    required: {
+      value: true,
+      message: "harga WNA tidak boleh kosong",
+    },
+    maxLength: {
+      value: 255,
+      message: "harga WNA terlalu panjang",
     },
   },
 };

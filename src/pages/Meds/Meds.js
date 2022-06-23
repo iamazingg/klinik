@@ -15,6 +15,7 @@ const Meds = () => {
   const locationID = useSelector(
     (state) => state.auth.locations
   );
+  let dataObat;
   const status = useSelector((state) => state.ui.status);
   const dispatch = useDispatch();
   const onSearchHandler = (event) => {
@@ -41,14 +42,13 @@ const Meds = () => {
         dispatch(UiSlice.actions.setFetchingDataError);
       });
   }, [dispatch]);
-  const onEditableClicked = (data) => {
-    console.log(data);
-  };
 
-  let [dataObat, setDataObat] = useState({});
   const edit = (data) => {
-    setDataObat(Meds.find((e) => e.id === data));
-    console.log(dataObat);
+    const dataObat = Meds.filter(
+      (med) => med.id === data
+    ).map((data) => {
+      dispatch(MedsSlice.actions.setSelectedMeds(data));
+    });
   };
   return (
     <div>
@@ -60,7 +60,7 @@ const Meds = () => {
             <h2 className="font-poppins text-xl font-medium ">
               Tambah data obat
             </h2>
-            <FormMeds data={dataObat} />
+            <FormMeds dataObat={dataObat} />
           </div>
           <div className="mt-3 py-6 px-6 rounded bg-white">
             <div className="flex my-4">
@@ -107,7 +107,10 @@ const Meds = () => {
               </thead>
               <tbody>
                 {content.map((items, index) => (
-                  <tr className="bg-white border-b ">
+                  <tr
+                    className="bg-white border-b"
+                    key={items.id}
+                  >
                     <td className=" text-center">
                       {items.med}
                     </td>

@@ -3,7 +3,7 @@ const MedsSlice = createSlice({
   name: "meds",
   initialState: {
     meds: [],
-    selectedMeds: [],
+    selectedMeds: "",
   },
   reducers: {
     setMeds(state, action) {
