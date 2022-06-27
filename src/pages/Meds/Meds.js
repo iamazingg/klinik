@@ -4,7 +4,6 @@ import { GetMeds } from "../../api/MedApi";
 import UiSlice from "../../store/slice/UiSlice";
 import MedsSlice from "../../store/slice/MedsSlice";
 import Loading from "../../components/loading/Loading";
-import Table from "../../components/table/Table";
 import FormMeds from "./FormMeds";
 import { FaEdit } from "react-icons/fa";
 import { MdOutlineDeleteSweep } from "react-icons/md";

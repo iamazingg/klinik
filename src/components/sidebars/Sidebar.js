@@ -80,9 +80,7 @@ const Sidebar = (props) => {
       <Link to="/meds">
         <SidebarItems text="Data Obat" />
       </Link>
-      <Link to="/#">
-        <SidebarItems text="Update Stok Obat" />
-      </Link>
+
       <div className="flex w-full items-center mt-2 p-2 text-gray-500 hover:bg-gray-200 hover:rounded-md hover:text-indigo-900">
         <span>
           <FaHandHoldingMedical className="w-5 h-5" />
