@@ -1,8 +1,9 @@
-import axios from "axios";
+import axios from 'axios';
 const config = axios.create({
-  baseURL: "http://localhost:8000/api/",
+  baseURL:
+    'http://ubud-taruna-medica.herokuapp.com/public/api/',
   headers: {
-    "X-Requested-With": "XMLHttpRequest",
+    'X-Requested-With': 'XMLHttpRequest',
   },
   withCredentials: true,
 });
