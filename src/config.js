@@ -1,7 +1,6 @@
 import axios from 'axios';
 const config = axios.create({
-  baseURL:
-    'https://ubud-taruna-medica.herokuapp.com/public/api/',
+  baseURL: 'https://nyomandarmawan.id/api/',
   headers: {
     'X-Requested-With': 'XMLHttpRequest',
   },
