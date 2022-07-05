@@ -6,3 +6,9 @@ export async function getPatient(token) {
     },
   });
 }
+export async function SavePatient(formData, token) {
+  return await config.post("medCategoriessave", formData, {
+    headers: { Authorization: `Bearer ${token}` },
+  });
+}
+
