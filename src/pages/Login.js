@@ -73,7 +73,7 @@ function Login() {
           Login
         </h1>
         <p className="text-center font-poppins mt-2 mb-2">
-          Sign in to your account
+          Sign in to your accounts
         </p>
         <form onSubmit={handleSubmit(onSubmit)}>
           <div className="mx-4 my-5">
