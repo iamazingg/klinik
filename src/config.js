@@ -1,6 +1,6 @@
 import axios from 'axios';
 const config = axios.create({
-  baseURL: 'https://nyomandarmawan.id/api/',
+  baseURL: 'https://klinik.nyomandarmawan.id/api/',
   headers: {
     'X-Requested-With': 'XMLHttpRequest',
   },
